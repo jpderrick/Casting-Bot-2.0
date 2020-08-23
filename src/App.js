@@ -1,8 +1,13 @@
 import React from "react";
-import { Button, createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+import {
+  Button,
+  createMuiTheme,
+  MuiThemeProvider,
+  CssBaseline,
+} from "@material-ui/core";
 import TopBar from "./components/TopBar";
 function App() {
-  const lightTheme = createMuiTheme({
+  const theme = createMuiTheme({
     palette: {
       primary: {
         light: "#bc564f",
@@ -16,12 +21,10 @@ function App() {
       },
     },
   });
+
   return (
-    <MuiThemeProvider theme={lightTheme}>
-      <div className="App">
-        <Button variant="contained">Hello, World</Button>
-        <TopBar />
-      </div>
+    <MuiThemeProvider theme={theme}>
+      <TopBar />
     </MuiThemeProvider>
   );
 }

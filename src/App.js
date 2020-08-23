@@ -4,9 +4,21 @@ import {
   createMuiTheme,
   MuiThemeProvider,
   CssBaseline,
+  withStyles,
+  Toolbar,
 } from "@material-ui/core";
 import TopBar from "./components/TopBar";
-function App() {
+import SideDrawer from "./components/SideDrawer";
+
+const styles = (theme) => ({
+  root: { display: "flex" },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+});
+
+function App({ classes, ...props }) {
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -24,9 +36,16 @@ function App() {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <TopBar />
+      <div className={classes.root}>
+        <TopBar />
+        <SideDrawer />
+        <div className={classes.content}>
+          <Toolbar />
+          sdfsdfsdfdsfsdgdfgdf
+        </div>
+      </div>
     </MuiThemeProvider>
   );
 }
 
-export default App;
+export default withStyles(styles)(App);

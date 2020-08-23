@@ -12,6 +12,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const styles = (theme) => ({
+  appBar: { zIndex: theme.zIndex.drawer + 1, marginBottom: theme.spacing(3) },
   titleHolder: {
     color: theme.palette.primary.contrastText,
     flexGrow: 1,
@@ -26,7 +27,7 @@ const styles = (theme) => ({
 
 const TopBar = ({ classes, ...props }) => {
   return (
-    <AppBar>
+    <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
         <div className={classes.titleHolder}>
           <IconButton className={classes.icon} disableRipple>

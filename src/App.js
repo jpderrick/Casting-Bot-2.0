@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   createMuiTheme,
@@ -9,7 +9,8 @@ import {
 } from "@material-ui/core";
 import TopBar from "./components/TopBar";
 import SideDrawer from "./components/SideDrawer";
-
+import ModalContainer from "./components/ModalContainer";
+import NewSeason from "./components/NewSeason";
 const styles = (theme) => ({
   root: { display: "flex" },
   content: {
@@ -34,6 +35,8 @@ function App({ classes, ...props }) {
     },
   });
 
+  const [modalOpen, setModalOpen] = useState(true);
+
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.root}>
@@ -44,6 +47,13 @@ function App({ classes, ...props }) {
           sdfsdfsdfdsfsdgdfgdf
         </div>
       </div>
+      <ModalContainer
+        isOpen={modalOpen}
+        toggleModal={setModalOpen}
+        modalTitle={"New Season"}
+      >
+        <NewSeason />
+      </ModalContainer>
     </MuiThemeProvider>
   );
 }

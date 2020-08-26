@@ -21,6 +21,7 @@ const styles = (theme) => ({
 
 function App({ classes, ...props }) {
   const theme = createMuiTheme({
+    shadows: ["none"],
     palette: {
       primary: {
         light: "#bc564f",

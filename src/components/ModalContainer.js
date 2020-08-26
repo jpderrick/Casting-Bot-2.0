@@ -50,7 +50,7 @@ const ModalContainer = ({
                   <Typography variant="h6">{modalTitle}</Typography>
                 </div>
               </div>
-              Hehehj
+
               {props.children}
             </Paper>
           </div>

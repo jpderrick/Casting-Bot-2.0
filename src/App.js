@@ -48,13 +48,6 @@ function App({ classes, ...props }) {
           sdfsdfsdfdsfsdgdfgdf
         </div>
       </div>
-      <ModalContainer
-        isOpen={modalOpen}
-        toggleModal={setModalOpen}
-        modalTitle={"New Season"}
-      >
-        <NewSeason />
-      </ModalContainer>
     </MuiThemeProvider>
   );
 }

@@ -9,8 +9,8 @@ import {
 } from "@material-ui/core";
 import TopBar from "./components/TopBar";
 import SideDrawer from "./components/SideDrawer";
-import ModalContainer from "./components/ModalContainer";
-import NewSeason from "./components/NewSeason";
+
+import SeasonViewPage from "./pages/SeasonViewPage";
 const styles = (theme) => ({
   root: { display: "flex" },
   content: {
@@ -45,7 +45,7 @@ function App({ classes, ...props }) {
         <SideDrawer />
         <div className={classes.content}>
           <Toolbar />
-          sdfsdfsdfdsfsdgdfgdf
+          <SeasonViewPage />
         </div>
       </div>
     </MuiThemeProvider>

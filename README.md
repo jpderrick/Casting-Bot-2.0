@@ -2,7 +2,20 @@
 
 Bespoke casting software for the University of York Drama society's termly show casting meetings.
 
-` Frontend compiling
+# Technologies
+
+Frotend: 
+
+React, using:
+  - Redux
+  - Material UI + Icons + Font
+  - React Router
+
+Backend: 
+
+Node.js REST API on top of MongoDB (probably) 
+
+### Launching the frontend 
 
 Having cloned, you'll need to run:
 
@@ -11,3 +24,5 @@ npm install
 
 npm run
 ```
+
+

@@ -49,12 +49,6 @@ const ModalContainer = ({
                 <div className={classes.modalTitleText}>
                   <Typography variant="h6">{modalTitle}</Typography>
                 </div>
-
-                <div>
-                  <IconButton size="small" onClick={() => toggleModal()}>
-                    <CloseIcon />
-                  </IconButton>
-                </div>
               </div>
               Hehehj
               {props.children}

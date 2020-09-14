@@ -34,7 +34,7 @@ const FreeToCast = ({ classes, ...props }) => {
 
                 <ListItemSecondaryAction>
                   <Tooltip title="Cast">
-                    <IconButton>
+                    <IconButton color="secondary">
                       <CheckIcon />
                     </IconButton>
                   </Tooltip>

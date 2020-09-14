@@ -11,8 +11,7 @@ import {
   Paper,
 } from "@material-ui/core";
 import _ from "lodash";
-
-import CheckIcon from "@material-ui/icons/Check";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
 const styles = (theme) => ({
   personToCast: { marginBottom: theme.spacing() },
@@ -27,12 +26,14 @@ const Deadlocks = ({ classes, ...props }) => {
           return (
             <Paper className={classes.personToCast}>
               <ListItem>
-                <ListItemText>Joe Bloggs (Week 3) </ListItemText>
-                <ListItemText>Hello</ListItemText>
+                <ListItemText>Joe Bloggs</ListItemText>
+                <ListItemText primary={"Role"} secondary={"Week 3"} />
+                <ListItemText primary={"Role"} secondary={"Week 4"} />
+
                 <ListItemSecondaryAction>
-                  <Tooltip title="Cast">
-                    <IconButton>
-                      <CheckIcon />
+                  <Tooltip title="Needs Resolving!">
+                    <IconButton disabled>
+                      <ErrorOutlineIcon />
                     </IconButton>
                   </Tooltip>
                 </ListItemSecondaryAction>

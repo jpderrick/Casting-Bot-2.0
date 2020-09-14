@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import {
   withStyles,
-  TableBody,
-  TableRow,
-  Table,
-  TableHead,
   Typography,
-  TableCell,
   Paper,
   IconButton,
   List,
@@ -21,21 +16,16 @@ import SettingsIcon from "@material-ui/icons/Settings";
 
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import SeasonSettingsModal from "../modals/SeasonSettingsModal";
+import AddPlayModal from "../modals/AddPlayModal";
+import EditPlayModal from "../modals/EditPlayModal";
 
 const styles = (theme) => ({
   seasonList: { marginTop: theme.spacing() },
   playItem: {
     marginBottom: theme.spacing(),
   },
-  weekIndicator: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.secondary.contrastText,
-    marginLeft: -theme.spacing(2),
-    marginTop: -theme.spacing(),
-    marginBottom: -theme.spacing(),
-    padding: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    fontWeight: "bold",
+  addPlayButton: {
+    marginRight: theme.spacing(),
   },
   typeChip: {
     marginLeft: theme.spacing(),
@@ -44,6 +34,8 @@ const styles = (theme) => ({
 
 const SeasonViewPage = ({ classes, ...props }) => {
   const [seasonSettingsModal, setSeasonSettingsModal] = useState(false);
+  const [newPlayModal, setNewPlayModal] = useState(false);
+  const [editPlayModal, setEditPlayModal] = useState(false);
   return (
     <div>
       <List>
@@ -52,10 +44,17 @@ const SeasonViewPage = ({ classes, ...props }) => {
             primary={<Typography variant="h6">Season Title</Typography>}
           />
           <ListItemSecondaryAction>
-            <Button variant="contained" startIcon={<AddCircleIcon />}>
+            <Button
+              className={classes.addPlayButton}
+              color="secondary"
+              variant="contained"
+              startIcon={<AddCircleIcon />}
+              onClick={() => setNewPlayModal(true)}
+            >
               Add PLAY
             </Button>
             <Button
+              color="secondary"
               onClick={() => setSeasonSettingsModal(true)}
               variant="contained"
               startIcon={<SettingsIcon />}
@@ -73,14 +72,14 @@ const SeasonViewPage = ({ classes, ...props }) => {
               primary={
                 <div>
                   <Typography style={{ display: "inline-block" }}>
-                    The Drunks
+                    <strong>Week 2:</strong> The Drunks
                   </Typography>
                   <Chip className={classes.typeChip} size="small" label="ODN" />
                 </div>
               }
             />
             <ListItemSecondaryAction>
-              <IconButton>
+              <IconButton onClick={() => setEditPlayModal(true)}>
                 <SettingsIcon />
               </IconButton>
             </ListItemSecondaryAction>
@@ -100,6 +99,14 @@ const SeasonViewPage = ({ classes, ...props }) => {
       <SeasonSettingsModal
         modalOpen={seasonSettingsModal}
         toggleModalOpen={setSeasonSettingsModal}
+      />
+      <AddPlayModal
+        modalOpen={newPlayModal}
+        toggleModalOpen={setNewPlayModal}
+      />
+      <EditPlayModal
+        modalOpen={editPlayModal}
+        toggleModalOpen={setEditPlayModal}
       />
     </div>
   );

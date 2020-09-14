@@ -12,6 +12,7 @@ import TopBar from "./components/TopBar";
 import SideDrawer from "./components/SideDrawer";
 
 import SeasonViewPage from "./pages/SeasonViewPage";
+import CastingMeetingPage from "./pages/CastingMeetingPage";
 const styles = (theme) => ({
   root: { display: "flex" },
   content: {
@@ -56,7 +57,7 @@ function App({ classes, ...props }) {
         <SideDrawer />
         <div className={classes.content}>
           <Toolbar />
-          <SeasonViewPage />
+          <CastingMeetingPage />
         </div>
       </div>
     </MuiThemeProvider>

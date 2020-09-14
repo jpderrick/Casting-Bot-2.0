@@ -8,8 +8,10 @@ import {
   Toolbar,
   ListItemText,
   ListItemIcon,
+  Divider,
 } from "@material-ui/core";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import SeasonSideBar from "./SeasonSideBar";
 const drawerWidth = 240;
 
 const styles = (theme) => ({
@@ -22,6 +24,13 @@ const styles = (theme) => ({
   },
   drawerContainer: {
     overflow: "auto",
+  },
+  divideCenter: {
+    marginLeft: theme.spacing(),
+    marginRight: theme.spacing(),
+  },
+  sidebarContent: {
+    margin: theme.spacing(2),
   },
 });
 
@@ -43,6 +52,10 @@ const SideDrawer = ({ classes, ...props }) => {
               <ListItemText primary="Seasons" />
             </ListItem>
           </List>
+        </div>
+        <Divider className={classes.divideCenter} />
+        <div className={classes.sidebarContent}>
+          <SeasonSideBar />
         </div>
       </Drawer>
     </div>

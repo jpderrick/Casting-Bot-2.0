@@ -24,16 +24,6 @@ const SeasonSettingsModal = ({ classes, ...props }) => {
           className={classes.tallerButton}
           fullWidth
           variant="contained"
-          color={castingOpen ? "secondary" : "primary"}
-          onClick={() => setCastingOpen(!castingOpen)}
-          startIcon={castingOpen ? <MeetingRoomIcon /> : <NoMeetingRoomIcon />}
-        >
-          CASTING {castingOpen ? "IS OPEN " : "CLOSED "}
-        </Button>
-        <Button
-          className={classes.tallerButton}
-          fullWidth
-          variant="contained"
           color={"primary"}
           startIcon={<DeleteIcon />}
         >

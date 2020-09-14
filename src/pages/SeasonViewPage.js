@@ -15,21 +15,35 @@ import {
   ListItemSecondaryAction,
   Divider,
   Button,
+  Chip,
 } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
 import SettingsIcon from "@material-ui/icons/Settings";
-import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
-import NoMeetingRoomIcon from "@material-ui/icons/NoMeetingRoom";
+
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import SeasonSettingsModal from "../modals/SeasonSettingsModal";
 
 const styles = (theme) => ({
   seasonList: { marginTop: theme.spacing() },
   playItem: {
     marginBottom: theme.spacing(),
   },
+  weekIndicator: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.secondary.contrastText,
+    marginLeft: -theme.spacing(2),
+    marginTop: -theme.spacing(),
+    marginBottom: -theme.spacing(),
+    padding: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    fontWeight: "bold",
+  },
+  typeChip: {
+    marginLeft: theme.spacing(),
+  },
 });
 
 const SeasonViewPage = ({ classes, ...props }) => {
-  const [castingOpen, setCastingOpen] = useState(false);
+  const [seasonSettingsModal, setSeasonSettingsModal] = useState(false);
   return (
     <div>
       <List>
@@ -38,16 +52,15 @@ const SeasonViewPage = ({ classes, ...props }) => {
             primary={<Typography variant="h6">Season Title</Typography>}
           />
           <ListItemSecondaryAction>
+            <Button variant="contained" startIcon={<AddCircleIcon />}>
+              Add PLAY
+            </Button>
             <Button
-              className={classes.castingCloseOpen}
+              onClick={() => setSeasonSettingsModal(true)}
               variant="contained"
-              color={castingOpen ? "secondary" : "primary"}
-              onClick={() => setCastingOpen(!castingOpen)}
-              startIcon={
-                castingOpen ? <MeetingRoomIcon /> : <NoMeetingRoomIcon />
-              }
+              startIcon={<SettingsIcon />}
             >
-              CASTING IS {castingOpen ? "OPEN " : "CLOSED "}
+              SEASON SETTINGS
             </Button>
           </ListItemSecondaryAction>
         </ListItem>
@@ -55,8 +68,17 @@ const SeasonViewPage = ({ classes, ...props }) => {
 
       <List className={classes.seasonList}>
         <Paper>
-          <ListItem className={classes.playItem}>
-            <ListItemText primary="The Drunks" />
+          <ListItem ho className={classes.playItem}>
+            <ListItemText
+              primary={
+                <div>
+                  <Typography style={{ display: "inline-block" }}>
+                    The Drunks
+                  </Typography>
+                  <Chip className={classes.typeChip} size="small" label="ODN" />
+                </div>
+              }
+            />
             <ListItemSecondaryAction>
               <IconButton>
                 <SettingsIcon />
@@ -75,6 +97,10 @@ const SeasonViewPage = ({ classes, ...props }) => {
           </ListItem>
         </Paper>
       </List>
+      <SeasonSettingsModal
+        modalOpen={seasonSettingsModal}
+        toggleModalOpen={setSeasonSettingsModal}
+      />
     </div>
   );
 };

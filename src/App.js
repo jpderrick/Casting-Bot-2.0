@@ -7,6 +7,7 @@ import {
   withStyles,
   Toolbar,
 } from "@material-ui/core";
+
 import TopBar from "./components/TopBar";
 import SideDrawer from "./components/SideDrawer";
 
@@ -34,12 +35,22 @@ function App({ classes, ...props }) {
         dark: "#212c6f",
       },
     },
+    overrides: {
+      MuiCssBaseline: {
+        "@global": {
+          body: {
+            backgroundColor: "#ebebeb",
+          },
+        },
+      },
+    },
   });
 
   const [modalOpen, setModalOpen] = useState(true);
 
   return (
     <MuiThemeProvider theme={theme}>
+      <CssBaseline />
       <div className={classes.root}>
         <TopBar />
         <SideDrawer />

@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import SeasonSideBar from "./SeasonSideBar";
+import { Link } from "react-router-dom";
 const drawerWidth = 240;
 
 const styles = (theme) => ({
@@ -45,7 +46,7 @@ const SideDrawer = ({ classes, ...props }) => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            <ListItem button>
+            <ListItem button to="/seasons" component={Link}>
               <ListItemIcon>
                 <AccountBalanceIcon />
               </ListItemIcon>

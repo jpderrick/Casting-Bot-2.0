@@ -14,6 +14,7 @@ import SideDrawer from "./components/SideDrawer";
 import SeasonViewPage from "./pages/SeasonViewPage";
 import CastingMeetingPage from "./pages/CastingMeetingPage";
 import SnackBarHolder from "./components/SnackBarHolder";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 const styles = (theme) => ({
   root: { display: "flex" },
   content: {
@@ -53,15 +54,22 @@ function App({ classes, ...props }) {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <div className={classes.root}>
-        <TopBar />
-        <SideDrawer />
-        <div className={classes.content}>
-          <Toolbar />
-          <CastingMeetingPage />
-          <SnackBarHolder />
+      <BrowserRouter>
+        <div className={classes.root}>
+          <TopBar />
+          <SideDrawer />
+          <div className={classes.content}>
+            <Toolbar />
+            <Switch>
+              <Route path="/seasons">Test</Route>
+              <Route path="/">
+                <CastingMeetingPage />
+              </Route>
+            </Switch>
+            <SnackBarHolder />
+          </div>
         </div>
-      </div>
+      </BrowserRouter>
     </MuiThemeProvider>
   );
 }

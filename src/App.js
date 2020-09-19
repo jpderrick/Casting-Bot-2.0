@@ -61,7 +61,10 @@ function App({ classes, ...props }) {
           <div className={classes.content}>
             <Toolbar />
             <Switch>
-              <Route path="/seasons">Test</Route>
+              <Route exact path="/seasons">
+                Test
+              </Route>
+              <Route path="/seasons/:id">THis is a routed by id</Route>
               <Route path="/">
                 <CastingMeetingPage />
               </Route>

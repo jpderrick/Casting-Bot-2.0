@@ -12,7 +12,10 @@ import {
 } from "@material-ui/core";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import SeasonSideBar from "./SeasonSideBar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
+import SettingsIcon from "@material-ui/icons/Settings";
+
 const drawerWidth = 240;
 
 const styles = (theme) => ({
@@ -36,6 +39,8 @@ const styles = (theme) => ({
 });
 
 const SideDrawer = ({ classes, ...props }) => {
+  const location = useLocation();
+  const seasonsCheck = "seasons/d";
   return (
     <div>
       <Drawer
@@ -52,11 +57,23 @@ const SideDrawer = ({ classes, ...props }) => {
               </ListItemIcon>
               <ListItemText primary="Seasons" />
             </ListItem>
+            <ListItem button to="/people" component={Link}>
+              <ListItemIcon>
+                <EmojiPeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="People" />
+            </ListItem>
+            <ListItem button to="/settings" component={Link}>
+              <ListItemIcon>
+                <SettingsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Settings" />
+            </ListItem>
           </List>
         </div>
         <Divider className={classes.divideCenter} />
         <div className={classes.sidebarContent}>
-          <SeasonSideBar />
+          {location.pathname == "/seasons/1" && <SeasonSideBar />}
         </div>
       </Drawer>
     </div>

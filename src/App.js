@@ -15,6 +15,8 @@ import SeasonViewPage from "./pages/SeasonViewPage";
 import CastingMeetingPage from "./pages/CastingMeetingPage";
 import SnackBarHolder from "./components/SnackBarHolder";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import SeasonsPage from "./pages/SeasonsPage";
+import SettingsPage from "./pages/SettingsPage";
 const styles = (theme) => ({
   root: { display: "flex" },
   content: {
@@ -49,8 +51,6 @@ function App({ classes, ...props }) {
     },
   });
 
-  const [modalOpen, setModalOpen] = useState(true);
-
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
@@ -62,9 +62,17 @@ function App({ classes, ...props }) {
             <Toolbar />
             <Switch>
               <Route exact path="/seasons">
-                Test
+                <SeasonsPage />
               </Route>
-              <Route path="/seasons/:id">THis is a routed by id</Route>
+              <Route path="/seasons/:id">
+                <SeasonViewPage />
+              </Route>
+              <Route path="/settings">
+                <SettingsPage />
+              </Route>
+              <Route path="/casting/:id">
+                <CastingMeetingPage />
+              </Route>
               <Route path="/">
                 <CastingMeetingPage />
               </Route>

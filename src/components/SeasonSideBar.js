@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Typography, withStyles } from "@material-ui/core";
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import NoMeetingRoomIcon from "@material-ui/icons/NoMeetingRoom";
+import { Link } from "react-router-dom";
 const styles = (theme) => ({
   sidebarTitle: {
     marginBottom: theme.spacing(),
@@ -24,7 +25,13 @@ const SeasonSideBar = ({ classes, ...props }) => {
       >
         CASTING {castingOpen ? "IS OPEN " : "CLOSED "}
       </Button>
-      <Button className={classes.formControl} variant="contained" fullWidth>
+      <Button
+        className={classes.formControl}
+        variant="contained"
+        fullWidth
+        component={Link}
+        to="/casting/1"
+      >
         Casting Meeting
       </Button>
     </div>

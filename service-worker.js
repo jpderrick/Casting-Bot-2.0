@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Casting-Bot-2.0/precache-manifest.4674746fb50b8a12cfec5a12e0ee7558.js"
+  "/Casting-Bot-2.0/precache-manifest.9639d1a99693dbec694048c94dc0f6aa.js"
 );
 
 self.addEventListener('message', (event) => {

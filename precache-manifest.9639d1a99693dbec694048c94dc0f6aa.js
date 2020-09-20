@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1c66e182d5f0aa22f1a4246a37585874",
+    "revision": "be0a9af2e0ab18a309b68c6cbadcc66f",
     "url": "/Casting-Bot-2.0/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Casting-Bot-2.0/static/js/2.50c33dc9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ae01f97ea09d6d4666ff",
-    "url": "/Casting-Bot-2.0/static/js/main.5f2d861b.chunk.js"
+    "revision": "4d4750fc04c2995666d6",
+    "url": "/Casting-Bot-2.0/static/js/main.489da514.chunk.js"
   },
   {
     "revision": "8a2894865be6de8c31c0",

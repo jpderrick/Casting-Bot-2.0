@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/Casting-Bot-2.0/static/js/main.5f2d861b.chunk.js",
+    "main.js.map": "/Casting-Bot-2.0/static/js/main.5f2d861b.chunk.js.map",
+    "runtime-main.js": "/Casting-Bot-2.0/static/js/runtime-main.76fc0bfa.js",
+    "runtime-main.js.map": "/Casting-Bot-2.0/static/js/runtime-main.76fc0bfa.js.map",
+    "static/js/2.50c33dc9.chunk.js": "/Casting-Bot-2.0/static/js/2.50c33dc9.chunk.js",
+    "static/js/2.50c33dc9.chunk.js.map": "/Casting-Bot-2.0/static/js/2.50c33dc9.chunk.js.map",
+    "index.html": "/Casting-Bot-2.0/index.html",
+    "precache-manifest.4674746fb50b8a12cfec5a12e0ee7558.js": "/Casting-Bot-2.0/precache-manifest.4674746fb50b8a12cfec5a12e0ee7558.js",
+    "service-worker.js": "/Casting-Bot-2.0/service-worker.js",
+    "static/js/2.50c33dc9.chunk.js.LICENSE.txt": "/Casting-Bot-2.0/static/js/2.50c33dc9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.76fc0bfa.js",
+    "static/js/2.50c33dc9.chunk.js",
+    "static/js/main.5f2d861b.chunk.js"
+  ]
+}

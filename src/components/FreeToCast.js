@@ -18,7 +18,7 @@ const styles = (theme) => ({
   personToCast: { marginBottom: theme.spacing() },
 });
 
-const FreeToCast = ({ classes, ...props }) => {
+const FreeToCast = ({ classes, canCast, ...props }) => {
   return (
     <div>
       <Typography variant="h6">Free to cast</Typography>
@@ -33,11 +33,13 @@ const FreeToCast = ({ classes, ...props }) => {
                 ></ListItemText>
 
                 <ListItemSecondaryAction>
-                  <Tooltip title="Cast">
-                    <IconButton color="secondary">
-                      <CheckIcon />
-                    </IconButton>
-                  </Tooltip>
+                  {canCast && (
+                    <Tooltip title="Cast">
+                      <IconButton color="secondary">
+                        <CheckIcon />
+                      </IconButton>
+                    </Tooltip>
+                  )}
                 </ListItemSecondaryAction>
               </ListItem>
             </Paper>

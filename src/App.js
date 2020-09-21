@@ -11,7 +11,8 @@ import SideDrawer from "./components/SideDrawer";
 import SnackBarHolder from "./components/SnackBarHolder";
 import { BrowserRouter } from "react-router-dom";
 import AppRouting from "./pages/AppRouting";
-
+import { Provider } from "react-redux";
+import { store } from "./redux";
 const styles = (theme) => ({
   root: { display: "flex" },
   content: {
@@ -48,18 +49,20 @@ function App({ classes, ...props }) {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <CssBaseline />
-      <BrowserRouter>
-        <div className={classes.root}>
-          <TopBar />
-          <SideDrawer />
-          <div className={classes.content}>
-            <Toolbar />
-            <AppRouting />
-            <SnackBarHolder />
+      <Provider store={store}>
+        <CssBaseline />
+        <BrowserRouter>
+          <div className={classes.root}>
+            <TopBar />
+            <SideDrawer />
+            <div className={classes.content}>
+              <Toolbar />
+              <AppRouting />
+              <SnackBarHolder />
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </Provider>
     </MuiThemeProvider>
   );
 }

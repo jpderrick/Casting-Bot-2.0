@@ -9,7 +9,7 @@ const styles = (theme) => ({});
 const CastingMeetingPage = ({ classes, ...props }) => {
   return (
     <div>
-      <FreeToCast />
+      <FreeToCast canCast />
       <Deadlocks />
       <Sharing />
     </div>

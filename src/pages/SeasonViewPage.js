@@ -17,25 +17,19 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import SeasonSettingsModal from "../modals/SeasonSettingsModal";
 import AddPlayModal from "../modals/AddPlayModal";
-import EditPlayModal from "../modals/EditPlayModal";
+import PlayListItem from "../components/PlayListItem";
 
 const styles = (theme) => ({
-  seasonList: { marginTop: theme.spacing() },
-  playItem: {
-    marginBottom: theme.spacing(),
-  },
+  playList: { marginTop: theme.spacing() },
+
   addPlayButton: {
     marginRight: theme.spacing(),
-  },
-  typeChip: {
-    marginLeft: theme.spacing(),
   },
 });
 
 const SeasonViewPage = ({ classes, ...props }) => {
   const [seasonSettingsModal, setSeasonSettingsModal] = useState(false);
   const [newPlayModal, setNewPlayModal] = useState(false);
-  const [editPlayModal, setEditPlayModal] = useState(false);
   return (
     <div>
       <List>
@@ -65,36 +59,8 @@ const SeasonViewPage = ({ classes, ...props }) => {
         </ListItem>
       </List>
 
-      <List className={classes.seasonList}>
-        <Paper>
-          <ListItem ho className={classes.playItem}>
-            <ListItemText
-              primary={
-                <div>
-                  <Typography style={{ display: "inline-block" }}>
-                    <strong>Week 2:</strong> The Drunks
-                  </Typography>
-                  <Chip className={classes.typeChip} size="small" label="ODN" />
-                </div>
-              }
-            />
-            <ListItemSecondaryAction>
-              <IconButton onClick={() => setEditPlayModal(true)}>
-                <SettingsIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        </Paper>
-        <Paper>
-          <ListItem className={classes.playItem}>
-            <ListItemText primary="The Drunks" />
-            <ListItemSecondaryAction>
-              <IconButton>
-                <SettingsIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        </Paper>
+      <List className={classes.playList}>
+        <PlayListItem />
       </List>
       <SeasonSettingsModal
         modalOpen={seasonSettingsModal}
@@ -103,10 +69,6 @@ const SeasonViewPage = ({ classes, ...props }) => {
       <AddPlayModal
         modalOpen={newPlayModal}
         toggleModalOpen={setNewPlayModal}
-      />
-      <EditPlayModal
-        modalOpen={editPlayModal}
-        toggleModalOpen={setEditPlayModal}
       />
     </div>
   );

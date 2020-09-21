@@ -17,6 +17,7 @@ import SnackBarHolder from "./components/SnackBarHolder";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SeasonsPage from "./pages/SeasonsPage";
 import SettingsPage from "./pages/SettingsPage";
+import AppRouting from "./pages/AppRouting";
 const styles = (theme) => ({
   root: { display: "flex" },
   content: {
@@ -60,23 +61,7 @@ function App({ classes, ...props }) {
           <SideDrawer />
           <div className={classes.content}>
             <Toolbar />
-            <Switch>
-              <Route exact path="/seasons">
-                <SeasonsPage />
-              </Route>
-              <Route path="/seasons/:id">
-                <SeasonViewPage />
-              </Route>
-              <Route path="/settings">
-                <SettingsPage />
-              </Route>
-              <Route path="/casting/:id">
-                <CastingMeetingPage />
-              </Route>
-              <Route path="/">
-                <CastingMeetingPage />
-              </Route>
-            </Switch>
+            <AppRouting />
             <SnackBarHolder />
           </div>
         </div>

@@ -23,7 +23,7 @@ const styles = (theme) => ({
   },
 });
 
-const PlayListItem = ({ classes, ...props }) => {
+const PlayListItem = ({ classes, data, ...props }) => {
   const [editPlayModal, setEditPlayModal] = useState(false);
 
   return (
@@ -34,7 +34,7 @@ const PlayListItem = ({ classes, ...props }) => {
             primary={
               <div>
                 <Typography style={{ display: "inline-block" }}>
-                  <strong>Week 2:</strong> The Drunks
+                  {data.text}
                 </Typography>
                 <Chip className={classes.typeChip} size="small" label="ODN" />
               </div>

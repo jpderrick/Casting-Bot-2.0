@@ -1,77 +1,83 @@
-import React, { useState } from "react";
-import {
-  withStyles,
-  Typography,
-  Paper,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
-  Divider,
-  Button,
-  Chip,
-} from "@material-ui/core";
-import SettingsIcon from "@material-ui/icons/Settings";
-
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import SeasonSettingsModal from "../modals/SeasonSettingsModal";
-import AddPlayModal from "../modals/AddPlayModal";
+import React, { useState, useEffect } from "react";
+import { withStyles, List, LinearProgress, Button } from "@material-ui/core";
+import { actionTypes } from "../redux/actions/actionTypes";
 import PlayListItem from "../components/PlayListItem";
-
+import SeasonPageHeader from "../components/SeasonPageHeader";
+import { connect } from "react-redux";
+import { setPlaysData, setPlaysFailed } from "../redux/actions/actionCreators";
+import LoadingBar from "../components/LoadingBar";
+import GenericError from "../components/GenericError";
 const styles = (theme) => ({
   playList: { marginTop: theme.spacing() },
-
-  addPlayButton: {
-    marginRight: theme.spacing(),
-  },
 });
 
-const SeasonViewPage = ({ classes, ...props }) => {
-  const [seasonSettingsModal, setSeasonSettingsModal] = useState(false);
-  const [newPlayModal, setNewPlayModal] = useState(false);
+const SeasonViewPage = ({
+  classes,
+  setGetPlays,
+  loadingPlays,
+  failedLoadingPlays,
+  playsData,
+  setPlaysLoadFailed,
+  setAllPlaysData,
+  ...props
+}) => {
+  const getAllPlays = () => {
+    setGetPlays();
+    fetch("https://cat-fact.herokuapp.com/facts")
+      .then((response) => {
+        if (response.status !== 200) {
+          setPlaysLoadFailed(response.status);
+          return;
+        }
+        response.json().then((plays) => {
+          console.log(plays);
+          setAllPlaysData(plays.all);
+        });
+      })
+      .catch((err) => {
+        setPlaysLoadFailed(err + "");
+      });
+  };
+  useEffect(() => {
+    getAllPlays();
+  }, []);
   return (
     <div>
-      <List>
-        <ListItem>
-          <ListItemText
-            primary={<Typography variant="h6">Season Title</Typography>}
-          />
-          <ListItemSecondaryAction>
-            <Button
-              className={classes.addPlayButton}
-              color="secondary"
-              variant="contained"
-              startIcon={<AddCircleIcon />}
-              onClick={() => setNewPlayModal(true)}
-            >
-              Add PLAY
-            </Button>
-            <Button
-              color="secondary"
-              onClick={() => setSeasonSettingsModal(true)}
-              variant="contained"
-              startIcon={<SettingsIcon />}
-            >
-              SEASON SETTINGS
-            </Button>
-          </ListItemSecondaryAction>
-        </ListItem>
-      </List>
+      {loadingPlays && <LoadingBar />}
+      {failedLoadingPlays && <GenericError message={playsData} />}
+      {!loadingPlays && !failedLoadingPlays && (
+        <div>
+          <SeasonPageHeader />
 
-      <List className={classes.playList}>
-        <PlayListItem />
-      </List>
-      <SeasonSettingsModal
-        modalOpen={seasonSettingsModal}
-        toggleModalOpen={setSeasonSettingsModal}
-      />
-      <AddPlayModal
-        modalOpen={newPlayModal}
-        toggleModalOpen={setNewPlayModal}
-      />
+          <List className={classes.playList}>
+            {playsData.map((play, index) => {
+              return <PlayListItem key={index} data={play} />;
+            })}
+          </List>
+        </div>
+      )}
     </div>
   );
 };
 
-export default withStyles(styles)(SeasonViewPage);
+const mapStateToProps = (state) => {
+  const { GET_PLAYS_LOADING, GET_PLAYS_FAIL, PLAYS_DATA } = state;
+  return {
+    loadingPlays: GET_PLAYS_LOADING,
+    failedLoadingPlays: GET_PLAYS_FAIL,
+    playsData: PLAYS_DATA,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setGetPlays: () => dispatch({ type: actionTypes.GET_PLAYS_LOADING }),
+    setPlaysLoadFailed: (error) => dispatch(setPlaysFailed(error)),
+    setAllPlaysData: (data) => dispatch(setPlaysData(data)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(SeasonViewPage));

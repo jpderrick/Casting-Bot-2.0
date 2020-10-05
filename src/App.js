@@ -13,6 +13,7 @@ import { BrowserRouter } from "react-router-dom";
 import AppRouting from "./pages/AppRouting";
 import { Provider } from "react-redux";
 import { store } from "./redux";
+
 const styles = (theme) => ({
   root: { display: "flex" },
   content: {

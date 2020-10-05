@@ -6,3 +6,10 @@ const setSeasonsData = (response) => {
     data: response,
   };
 };
+
+const createNewSeason = (seasonData) => {
+  return {
+    type: actionTypes.NEW_SEASON,
+    data: seasonData,
+  };
+};
